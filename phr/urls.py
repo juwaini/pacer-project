@@ -4,4 +4,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'^add-patient$', views.add_patient, name='add_patient'),
 ]

@@ -1,12 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
+{% block head %}
 <head>
+
+    <style>
+        #logout.nav-pills > li.active > a {
+        background-color:red;
+        }
+        .nav-pills>li.active>a:hover {
+        background-color:red;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+      crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+{% endblock head %}
+
+{% block body %}
+{% load static %}
 <body>
-    <h1>
-        Done deal!
-    </h1>
+<div class="container">
+
+    <!-- for header -->
+    <div class="page-header">
+        <img src="{% static 'img/cisirlogo.jpeg' %}">
+    </div>
+    <!-- end header -->
+
+    <!-- for body -->
+    <div class="row" id="top">
+
+        <!-- for nav -->
+        <div class="col-md-2"><!-- nav begin -->
+
+        <ul id="navigation" class="nav nav-pills nav-stacked" role="tablist">
+            <li role="presentation" class="active"><a role="tab" data-toggle="tab" href="#patient">Patient</a></li>
+            <li role="presentation"><a role="tab" data-toggle="tab" href="#admin-class">Class</a></li>
+            <li role="presentation"><a role="tab" data-toggle="tab" href="#research">Research</a></li>
+            <li role="presentation"><a role="tab" data-toggle="tab" href="##submission">Submission</a></li>
+        </ul>
+        <br>
+
+        <ul id="logout" class="nav nav-pills nav-stacked">
+        <li class="active"><a href="/logout">Logout</a></li>
+        </ul>
+
+        </div>
+        <!-- end nav -->
+
+        <!-- for main panel -->
+
+        <!-- end main panel -->
+
+    </div><!-- .row -->
+    <!-- end body -->
+
+</div><!-- .container -->
 </body>
+{% endblock body %}
+
 </html>
