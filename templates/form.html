@@ -3,17 +3,35 @@
 <html lang="en">
 
 {% block head %}
+
     {{ block.super }}
+
 {% endblock head %}
 
 {%  block body %}
+
 <body>
-    <form action="." method="post">
-        {% csrf_token %}
-        {{ form }}
+    <form id='patient_form' action="." method="post">
+        <div class="form-group">
+            <label for="username" class="col-sm-2 control-label">
+                {% verbatim %}
+                {{ label }}
+                {% endverbatim %}
+            </label>
+            <div class="col-sm-6" id="name_form">
+                <input required type="text" class="form-control" name="name" id="name" :placeholder=placeholder>
+            </div>
+        </div>
         <input type="submit" value="Submit" />
     </form>
 </body>
+
+{% load static %}
+<script src="{% static 'js/phr.js' %}">
+</script>
+
 {% endblock body %}
 
+
 </html>
+

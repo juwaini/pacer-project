@@ -6,7 +6,7 @@ from .forms import PatientForm
 
 
 def index(request):
-    return render(request, template_name='home.html')
+    return render(request, template_name='index.html')
 
 
 def add_patient(request):
