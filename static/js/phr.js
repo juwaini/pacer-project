@@ -3,9 +3,17 @@
  */
 
 var patient_form = new Vue({
-    el: '#patient_form',
+    el: '#patient-form',
     data: {
-        placeholder: 'Hello Vue!',
-        label: 'Name:'
+        formData: {
+            csrfmiddlewaretoken: this.$el.csrfmiddlewaretoken.value,
+            sex: '',
+            language: ''
+        },
+    },
+    methods: {
+        on_add_patient_submit: function (event) {
+            console.log(this.$el.csrfmiddlewaretoken.value);
+        }
     }
 });
