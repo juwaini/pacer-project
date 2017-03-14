@@ -2,3 +2,6 @@ django
 gunicorn
 psycopg2
 whitenoise
+djangorestframework
+markdown
+django-filter

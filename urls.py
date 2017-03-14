@@ -15,10 +15,20 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.auth.models import User
+from rest_framework import routers, serializers, viewsets
+
 import views
+
+# from patients.views import PatientList
+#
+# router = routers.SimpleRouter()
+# router.register(r'patients', PatientList)
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    # url(r'^api', include(router.urls)),
     url(r'^admin/', admin.site.urls),
-    url(r'^phr/', include('phr.urls')),
+    # url(r'^patients/', include('patients.urls')),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]

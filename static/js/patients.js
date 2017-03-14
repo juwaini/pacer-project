@@ -6,7 +6,7 @@ var patient_form = new Vue({
     el: '#patient-form',
     data: {
         formData: {
-            csrfmiddlewaretoken: this.$el.csrfmiddlewaretoken.value,
+            //csrfmiddlewaretoken: this.$el.csrfmiddlewaretoken.value,
             sex: '',
             language: ''
         },
