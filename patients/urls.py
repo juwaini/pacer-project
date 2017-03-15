@@ -1,8 +1,10 @@
 from django.conf.urls import url, include
-from django.contrib import admin
 from . import views
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(r'patients', views.PatientViewSet)
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
-    url(r'^add-patient$', views.add_patient, name='add_patient'),
+    url(r'api/', include(router.urls)),
 ]

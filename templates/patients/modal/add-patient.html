@@ -1,5 +1,5 @@
 <!-- MERCHANT CREATE MERCHANT MODAL START -->
-<div class="modal fade" id="add-patient" role="dialog" aria-labelledby="" aria-hidden="true">
+<div v-ref=basic-modal id="add-patient-modal" class="modal fade" role="dialog" aria-labelledby="" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
@@ -13,12 +13,12 @@
         <div class="modal-body">
             <form id="patient-form" class="form-horizontal" role="form"><br><!-- "#merchant-merchant-details-form" -->
 
-                {% csrf_token %}
+                 <input type='hidden' id="csrfmiddlewaretoken" value="{{ csrf_token }}" />
 
                 <div class="form-group">
                     <label for="fullname" class="col-sm-2 control-label">Full Name</label>
                     <div class="col-sm-6">
-                        <input type="text" v-model="formData.name" value="" class="form-control" placeholder="e.g Ali Bin Abu">
+                        <input type="text" v-model="formData.full_name" class="form-control" placeholder="e.g Ali Bin Abu">
                     </div>
                 </div>
 
@@ -70,42 +70,42 @@
                 <div class="form-group">
                     <label for="email" class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-6">
-                        <input type="email" id="email" class="form-control" placeholder="test@testmail.com">
+                        <input type="email" v-model="formData.email" class="form-control" placeholder="test@testmail.com">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="address" class="col-sm-2 control-label">Address</label>
                     <div class="col-sm-6">
-                        <textarea class="form-control" rows="3" id="address"></textarea>
+                        <textarea class="form-control" rows="3" v-model="formData.address"></textarea>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="postcode" class="col-sm-2 control-label">Postcode</label>
                     <div class="col-sm-6">
-                        <input type="text" id="postcode" class="form-control" placeholder="12345">
+                        <input type="text" v-model="formData.postcode" class="form-control" placeholder="12345">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="town" class="col-sm-2 control-label">Town</label>
                     <div class="col-sm-6">
-                        <input type="text" id="town" class="form-control" placeholder="e.g Shah Alam">
+                        <input type="text" v-model="formData.town" class="form-control" placeholder="e.g Shah Alam">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="state" class="col-sm-2 control-label">State</label>
                     <div class="col-sm-6">
-                        <input type="text" id="state" class="form-control" placeholder="e.g Selangor">
+                        <input type="text" v-model="formData.state" class="form-control" placeholder="e.g Selangor">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="country" class="col-sm-2 control-label">Country</label>
                     <div class="col-sm-6">
-                        <input type="text" id="country" class="form-control" placeholder="Malaysia">
+                        <input type="text" v-model="formData.country" class="form-control" placeholder="Malaysia">
                     </div>
                 </div>
 
