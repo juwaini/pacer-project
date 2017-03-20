@@ -6,10 +6,15 @@ from django.contrib.auth import authenticate as aut, login as li, logout as lo
 # Create your views here.
 
 
+def register(request):
+    if request.method == 'GET':
+        return render(request, template_name='registration/register.html')
+
+
 def login(request):
     if request.method == 'GET':
         return render(request, template_name='registration/login.html')
-    else:
+    else: # for request.method == 'POST'
         email = request.POST.get('email')
         password = request.POST.get('password')
         user = User.objects.get(email=email)

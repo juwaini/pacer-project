@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'head.html' %}
+</head>
+
+<body>
+
+<div class="page-header">
+    {% load static %}
+    <center>
+        <img class="page-header-logo" align="center" src="{% static 'img/cisirlogo.jpeg' %}">
+    </center>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">&nbsp;</div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center"> <strong class="">REGISTER</strong>
+                </div>
+                <div class="panel-body">
+                <form name="login" action="{% url 'register' %}" class="form-horizontal" role="form" method="post">
+
+                    {% if error %}
+                    <div class="form-group">
+                    <label for="" class="col-sm-8" color="red">
+                        <strong><p style="color:red">Invalid email/password.</p>
+                        </strong>
+                    </label>
+                    </div>
+                    {% endif %}
+
+                    {% csrf_token %}
+
+                   <div class="form-group">
+                        <label for="email" class="col-sm-3 control-label">Email</label>
+                        <div class="col-sm-9">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" required="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="username" class="col-sm-3 control-label">Username</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="username" id="username" placeholder="Username" required="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-3 control-label">Password</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" name="password" id="password" placeholder="********" required="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password-repeat" class="col-sm-3 control-label">Password Again</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" name="password-repeat" id="password-repeat" placeholder="********" required="">
+                        </div>
+                    </div>
+                    <div class="form-group last">
+                        <div class="col-sm-offset-5 col-sm-9">
+                            <button type="submit" class="btn btn-success btn-sm">Register</button>
+                            <button type="reset" class="btn btn-default btn-sm">Reset</button>
+                        </div>
+                    </div>
+                </form>
+                </div>
+
+                <div class="panel-footer">&nbsp;
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
