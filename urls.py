@@ -22,7 +22,7 @@ from registration import urls as registration_urls
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^admin/', admin.site.urls),
-    url(r'', include(patients_urls.urlpatterns)),
-    url(r'', include(registration_urls.urlpatterns)),
+    url(r'^api/', include(patients_urls.urlpatterns)),
+    url(r'^', include(registration_urls.urlpatterns)),
     # url('^', include('django.contrib.auth.urls')),
 ]

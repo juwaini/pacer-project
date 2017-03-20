@@ -15,7 +15,7 @@ function onModalShown() {
             on_add_patient_submit: function (event) {
                 this.formData.csrfmiddlewaretoken = $('#csrfmiddlewaretoken').val();
                 console.log(this.formData);
-                this.$http.post('/api/patients/', this.formData);
+                this.$http.post('/api/patients/', JSON.stringify(this.formData));
                     //.then(alert('Successfully added!'), alert('Failed to add!'));
             },
 

@@ -1,12 +1,17 @@
 from .models import Patient
-from .serializers import PatientSerializer
-
-from rest_framework import viewsets
-
+from django.http import JsonResponse
 
 # Create your views here.
 
 
-class PatientViewSet(viewsets.ModelViewSet):
-        queryset = Patient.objects.all()
-        serializer_class = PatientSerializer
+def api_patients(request):
+    if request.method == 'GET':
+        patients = Patient.objects.all()
+        data = {}
+        for patient in patients:
+            data['full_name'] = patient.full_name
+
+        return JsonResponse(data)
+
+    elif request.method == 'POST':
+        return None
