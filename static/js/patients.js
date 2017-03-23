@@ -13,8 +13,21 @@ angular.module('pacerApp', [])
 
         angular.element(document).ready(function () {
             var url = 'api/patients';
+            var tableData = [];
             $http.get(url).then(function (res) {
-                console.log(res.data);
+                var json = res.data;
+                for (var i=0; i < json.length; i++)
+                {
+                    var tmpData = [];
+                    tmpData.push(i+1);
+                    tmpData.push(json[i].full_name);
+                    tmpData.push(json[i].date_of_birth);
+                    tmpData.push('Action');
+                    tableData.push(tmpData);
+                }
+                $('#patient-table').DataTable({
+                    data: tableData
+                });
             });
         });
 
