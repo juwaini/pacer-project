@@ -12,23 +12,7 @@ angular.module('pacerApp', [])
     .controller('patientCtrl', ['$scope', '$http', function ($scope, $http) {
 
         angular.element(document).ready(function () {
-            var url = 'api/patients';
-            var tableData = [];
-            $http.get(url).then(function (res) {
-                var json = res.data;
-                for (var i=0; i < json.length; i++)
-                {
-                    var tmpData = [];
-                    tmpData.push(i+1);
-                    tmpData.push(json[i].full_name);
-                    tmpData.push(json[i].date_of_birth);
-                    tmpData.push('Action');
-                    tableData.push(tmpData);
-                }
-                $('#patient-table').DataTable({
-                    data: tableData
-                });
-            });
+            loadTableData('load');
         });
 
         $scope.hint = {
@@ -62,14 +46,47 @@ angular.module('pacerApp', [])
         };
 
         $scope.patientFormSubmit = function(){
-            $scope.patientForm.csrfmiddlewaretoken = $('#csrfmiddlewaretoken').val();
-            console.log($scope.patientForm);
-
             var url = "api/patients/";
 
             $http.post(url, $scope.patientForm).then(function (res) {
                 alert(res.data);
                 $('#add-patient-modal').modal('toggle');
+                loadTableData('reload');
             });
         };
+
+        function loadTableData(action) {
+            var url = 'api/patients';
+            var patientTable = $('#patient-table');
+            var tableData = [];
+
+            $http.get(url).then(function (res) {
+                var json = res.data;
+                for (var i=0; i < json.length; i++)
+                {
+                    var tmpData = [];
+                    tmpData.push(i+1);
+                    tmpData.push(json[i].full_name);
+                    tmpData.push(json[i].date_of_birth);
+                    tmpData.push('Action');
+                    tableData.push(tmpData);
+                }
+
+                if (action == 'reload')
+                {
+                    patientTable.DataTable().destroy();
+                }
+
+                patientTable.DataTable({
+                    data: tableData,
+                    columns:
+                        [{'title': 'ID'},
+                        {'title': 'Patient Name'},
+                        {'title': 'Date of Birth'},
+                        {'title': 'Action'}]
+                });
+
+            });
+        }
+
     }]);
