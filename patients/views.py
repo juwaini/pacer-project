@@ -16,6 +16,7 @@ def api_patients(request):
             data = dict()
 
             data['full_name'] = patient.full_name
+            data['id_number'] = patient.id_number
             data['date_of_birth'] = patient.date_of_birth
             data['sex'] = patient.sex
             data['parent_name'] = patient.parent_name
@@ -38,6 +39,7 @@ def api_patients(request):
 
         patient = Patient()
         patient.full_name = data['full_name']
+        patient.id_number = data['id_number']
         patient.date_of_birth = datetime.strptime(dob, '%Y-%m-%d')
         patient.sex = data['sex']
         patient.parent_name = [data['parent_name']]

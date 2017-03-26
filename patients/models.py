@@ -7,6 +7,7 @@ from django.contrib.postgres.fields import ArrayField
 
 class Patient(models.Model):
     full_name = models.CharField(max_length=100)
+    id_number = models.CharField(max_length=30)
     date_of_birth = models.DateField()
     sex = models.CharField(max_length=1)
     parent_name = ArrayField(models.TextField(max_length=100))

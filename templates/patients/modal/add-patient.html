@@ -14,15 +14,19 @@
         <div class="modal-body">
             <form id="patient-form" class="form-horizontal" role="form"><br><!-- "#merchant-merchant-details-form" -->
 
-                {% endverbatim %}
-                <input type='hidden' id='csrfmiddlewaretoken' value='{{ csrf_token }}' />
-                {% verbatim %}
-
                 <div class="form-group">
-                    <label for="fullname" class="col-sm-2 control-label">Full Name</label>
+                    <label for="full_name" class="col-sm-2 control-label">Full Name</label>
                     <div class="col-sm-6">
                         <input type="text" ng-model="patientForm.full_name" class="form-control"
                                placeholder="{{ hint.full_name }}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_number" class="col-sm-2 control-label">ID Number</label>
+                    <div class="col-sm-6">
+                        <input type="text" ng-model="patientForm.id_number" class="form-control"
+                               placeholder="{{ hint.id_number }}">
                     </div>
                 </div>
 

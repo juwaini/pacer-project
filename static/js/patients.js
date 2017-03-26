@@ -17,6 +17,7 @@ angular.module('pacerApp', [])
 
         $scope.hint = {
             full_name: 'Key in patient name',
+            id_number: 'i.e: MyKid',
             date_of_birth: '01/01/1970',
             sex: 'Select Sex',
             parent_name: 'Key in parent name',
@@ -32,6 +33,7 @@ angular.module('pacerApp', [])
 
         $scope.patientForm = {
             full_name: '',
+            id_number: '',
             date_of_birth: '',
             sex: '',
             parent_name: '',
@@ -67,6 +69,7 @@ angular.module('pacerApp', [])
                     var tmpData = [];
                     tmpData.push(i+1);
                     tmpData.push(json[i].full_name);
+                    tmpData.push(json[i].id_number);
                     tmpData.push(json[i].date_of_birth);
                     tmpData.push('Action');
                     tableData.push(tmpData);
@@ -80,10 +83,13 @@ angular.module('pacerApp', [])
                 patientTable.DataTable({
                     data: tableData,
                     columns:
-                        [{'title': 'ID'},
-                        {'title': 'Patient Name'},
-                        {'title': 'Date of Birth'},
-                        {'title': 'Action'}]
+                        [
+                            {'title': 'No'},
+                            {'title': 'Patient Name'},
+                            {'title': 'ID No'},
+                            {'title': 'Date of Birth'},
+                            {'title': 'Action'}
+                        ]
                 });
 
             });
