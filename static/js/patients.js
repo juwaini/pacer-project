@@ -68,7 +68,7 @@ angular.module('pacerApp', [])
                 {
                     var tmpData = [];
                     tmpData.push(i+1);
-                    tmpData.push(json[i].full_name);
+                    tmpData.push(createClieckableLink(json[i].full_name, json[i].id));
                     tmpData.push(json[i].id_number);
                     tmpData.push(json[i].date_of_birth);
                     tmpData.push('Action');

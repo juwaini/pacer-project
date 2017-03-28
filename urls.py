@@ -20,8 +20,15 @@ from patients import urls as patients_urls
 from registration import urls as registration_urls
 
 urlpatterns = [
+
+    # For main project
     url(r'^$', views.index, name='index'),
+    url(r'^view-patient/(?P<patient_id>\d+)', views.view_patient, name='view-patient'),
+
+    # For Admin
     url(r'^admin/', admin.site.urls),
+
+    # For apps endpoint
     url(r'^api/', include(patients_urls.urlpatterns)),
     url(r'^', include(registration_urls.urlpatterns)),
     # url('^', include('django.contrib.auth.urls')),

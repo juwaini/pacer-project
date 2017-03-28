@@ -15,6 +15,7 @@ def api_patients(request):
         for patient in patients:
             data = dict()
 
+            data['id'] = patient.id
             data['full_name'] = patient.full_name
             data['id_number'] = patient.id_number
             data['date_of_birth'] = patient.date_of_birth
