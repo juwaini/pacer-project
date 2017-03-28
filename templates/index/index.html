@@ -15,13 +15,14 @@
 {% endblock head %}
 
 {% block body %}
-    {% include 'patients/body.html' %}
+    {% include 'index/body.html' %}
 {% endblock body %}
 
 </html>
 
 {% block modals %}
     {{ block.super }}
+    {% include 'index/modal/add-patient.html' %}
 {% endblock modals %}
 
 {% block loadjs %}

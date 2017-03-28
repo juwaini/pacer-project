@@ -21,9 +21,9 @@ from registration import urls as registration_urls
 
 urlpatterns = [
 
-    # For main project
+    # For index project
     url(r'^$', views.index, name='index'),
-    url(r'^view-patient/(?P<patient_id>\d+)', views.view_patient, name='view-patient'),
+    url(r'^patients/(?P<patient_id>\d+)', views.patients, name='patients'),
 
     # For Admin
     url(r'^admin/', admin.site.urls),

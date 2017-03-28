@@ -2,16 +2,20 @@
 <html lang="en">
 
 {% block head %}
-    {% include 'head.html' %}
+    {% include 'base/head.html' %}
 {% endblock head %}
 
 {% block body %}
-    {% include 'body.html' %}
+    {% include 'base/body.html' %}
 {% endblock body %}
 
 </html>
 
-{% include 'patients/modal/add-patient.html' %}
+{% block modals %}
+{% endblock modals %}
+
+{% block loadjs %}
+{% endblock loadjs %}
 
 {% block script %}
 {% endblock script %}
