@@ -22,11 +22,13 @@
 
 {% block modals %}
     {{ block.super }}
+    {% include 'patients/modal/add-parent.html' %}
 {% endblock modals %}
 
 {% block loadjs %}
     {% load static %}
     <script src="{% static 'js/pacer.js' %}"></script>
-    <script src="{% static 'js/patients.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+    <script src="{% static 'js/patientsParentCtrl.js' %}"></script>
     <script src="{% static 'js/helper.js' %}"></script>
 {% endblock loadjs %}

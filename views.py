@@ -11,4 +11,7 @@ def index(request):
 
 @login_required(login_url='/login')
 def patients(request, patient_id):
-    return render(request, template_name='patients/index.html')
+    context = {}
+    context['patient_id'] = patient_id
+
+    return render(request=request, template_name='patients/index.html', context=context)

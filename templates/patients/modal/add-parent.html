@@ -1,6 +1,6 @@
 {% verbatim %}
 <!-- MERCHANT CREATE MERCHANT MODAL START -->
-<div id="add-patient-modal" class="modal fade" role="dialog" aria-labelledby="" aria-hidden="true">
+<div ng-controller="patientParentCtrl" id="add-parent-modal" class="modal fade" role="dialog" aria-labelledby="" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
@@ -8,16 +8,20 @@
             <button type="button" class="close" data-dismiss="modal">
                 <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
             </button>
-            <h4 class="modal-title">Add Patient</h4>
+            <h4 class="modal-title">Add Parents/Guardian</h4>
         </div><!-- class="modal-header" for "#merchant-create-merchant-modal" -->
 
         <div class="modal-body">
-            <form id="patient-form" class="form-horizontal" role="form"><br><!-- "#merchant-merchant-details-form" -->
+            <form id="parent-form" class="form-horizontal" role="form"><br><!-- "#merchant-merchant-details-form" -->
+
+                {% endverbatim %}
+                <input type="hidden" id="patient_id" value="{{ patient_id }}">
+                {% verbatim %}
 
                 <div class="form-group">
                     <label for="full_name" class="col-sm-2 control-label">Full Name</label>
                     <div class="col-sm-6">
-                        <input type="text" ng-model="patientForm.full_name" class="form-control"
+                        <input type="text" ng-model="parentForm.full_name" class="form-control"
                                placeholder="{{ hint.full_name }}">
                     </div>
                 </div>
@@ -25,20 +29,12 @@
                 <div class="form-group">
                     <label for="id_number" class="col-sm-2 control-label">ID Number</label>
                     <div class="col-sm-6">
-                        <input type="text" ng-model="patientForm.id_number" class="form-control"
+                        <input type="text" ng-model="parentForm.id_number" class="form-control"
                                placeholder="{{ hint.id_number }}">
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="date_of_birth" class="col-sm-2 control-label">Date of Birth</label>
-                    <div class="col-sm-6">
-                        <input type="date" class="form-control" ng-model="patientForm.date_of_birth"
-                               placeholder="{{ hint.date_of_birth }}">
-                    </div>
-                </div>
-
-                <div class="form-group">
+                <!--div class="form-group">
                     <label for="sex" class="col-sm-2 control-label">Sex</label>
                     <div class="col-sm-6">
                         <select class="form-control" ng-model="patientForm.sex">
@@ -47,33 +43,12 @@
                             <option value="F">Female</option>
                         </select>
                     </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="parent_name" class="col-sm-2 control-label">Parent Name</label>
-                    <div class="col-sm-6">
-                        <input type="text" ng-model="patientForm.parent_name" class="form-control"
-                               placeholder="{{ hint.parent_name }}">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="language" class="col-sm-2 control-label">Language</label>
-                    <div class="col-sm-6">
-                        <select class="form-control" ng-model="patientForm.language">
-                            <option value="">{{ hint.language }}</option>
-                            <option value="M">Bahasa Melayu</option>
-                            <option value="E">English</option>
-                            <option value="C">Mandarin</option>
-                            <option value="T">Tamil</option>
-                        </select>
-                    </div>
-                </div>
+                </div-->
 
                 <div class="form-group">
                     <label for="contact_number" class="col-sm-2 control-label">Contact Number</label>
                     <div class="col-sm-6">
-                        <input type="text" ng-model="patientForm.contact_number" class="form-control"
+                        <input type="text" ng-model="parentForm.contact_number" class="form-control"
                                placeholder="{{ hint.contact_number }}">
                     </div>
                 </div>
@@ -81,14 +56,14 @@
                 <div class="form-group">
                     <label for="email" class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-6">
-                        <input type="email" ng-model="patientForm.email" class="form-control" placeholder="{{ hint.email }}">
+                        <input type="email" ng-model="parentForm.email" class="form-control" placeholder="{{ hint.email }}">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="address" class="col-sm-2 control-label">Address</label>
                     <div class="col-sm-6">
-                        <textarea class="form-control" rows="3" ng-model="patientForm.address"
+                        <textarea class="form-control" rows="3" ng-model="parentForm.address"
                                   placeholder="{{ hint.address }}"></textarea>
                     </div>
                 </div>
@@ -96,7 +71,7 @@
                 <div class="form-group">
                     <label for="postcode" class="col-sm-2 control-label">Postcode</label>
                     <div class="col-sm-6">
-                        <input type="text" ng-model="patientForm.postcode" class="form-control"
+                        <input type="text" ng-model="parentForm.postcode" class="form-control"
                                placeholder="{{ hint.postcode }}">
                     </div>
                 </div>
@@ -104,7 +79,7 @@
                 <div class="form-group">
                     <label for="town" class="col-sm-2 control-label">Town</label>
                     <div class="col-sm-6">
-                        <input type="text" ng-model="patientForm.town" class="form-control"
+                        <input type="text" ng-model="parentForm.town" class="form-control"
                                placeholder="{{ hint.town }}">
                     </div>
                 </div>
@@ -112,7 +87,7 @@
                 <div class="form-group">
                     <label for="state" class="col-sm-2 control-label">State</label>
                     <div class="col-sm-6">
-                        <input type="text" ng-model="patientForm.state" class="form-control"
+                        <input type="text" ng-model="parentForm.state" class="form-control"
                                placeholder="{{ hint.state }}">
                     </div>
                 </div>
@@ -120,14 +95,14 @@
                 <div class="form-group">
                     <label for="country" class="col-sm-2 control-label">Country</label>
                     <div class="col-sm-6">
-                        <input type="text" ng-model="patientForm.country" class="form-control"
+                        <input type="text" ng-model="parentForm.country" class="form-control"
                                placeholder="{{ hint.country }}">
                     </div>
                 </div>
 
                 <div class="modal-footer">
                     <!--button id="add-patient-submit" type="button" class="btn btn-primary">Submit</button-->
-                    <button ng-click="patientFormSubmit()" type="button" class="btn btn-primary">Submit</button>
+                    <button ng-click="parentFormSubmit()" type="button" class="btn btn-primary">Submit</button>
                     <button data-dismiss="modal" type="button" class="btn btn-danger">Close</button>
                 </div><!-- .modal-footer -->
 
