@@ -1,12 +1,11 @@
 <div class="col-md-2"><!-- nav begin -->
 
-    {% block navigation %}
-        <ul id="navigation" class="nav nav-pills nav-stacked" role="tablist">
-            <li role="presentation" class="active"><a role="tab" data-toggle="tab" href="#patient">Patient Profile</a></li>
-            <li role="presentation"><a role="tab" data-toggle="tab" href="#parents">Parents/Guardian</a></li>
-        </ul>
-        <br>
-    {% endblock navigation %}
+    <ul id="navigation" class="nav nav-pills nav-stacked" role="tablist">
+        <li role="presentation" class="active"><a role="tab" data-toggle="tab" href="#patient-profile">Patient Profile</a></li>
+        <li role="presentation"><a role="tab" data-toggle="tab" href="#diagnostics">Diagnostics</a></li>
+        <li role="presentation"><a role="tab" data-toggle="tab" href="#parents">Parents/Guardian</a></li>
+    </ul>
+    <br>
 
     <ul id="logout" class="nav nav-pills nav-stacked">
         <li class="active"><a href="javascript:closeTab()">Exit</a></li>

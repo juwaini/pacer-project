@@ -1,8 +1,20 @@
 <body ng-app="pacerApp">
     <div class="container">
         {% include 'base/header.html' %}
+
         <div class="row" id="top">
             {% include 'patients/nav.html' %}
+
+            <div id="body" class="col-md-10">
+                <div class="tab-content"><!-- .tab-content -->
+
+                    {% include 'patients/index-profile.html' %}
+                    {% include 'patients/index-parents.html' %}
+                    {% include 'patients/index-diagnostics.html' %}
+
+                </div><!-- .tab-content -->
+            </div><!-- #body .col-md-10 -->
+
         </div>
     </div>
 </body>
