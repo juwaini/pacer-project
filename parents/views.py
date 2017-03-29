@@ -24,7 +24,7 @@ def api_parents(request):
             data['town'] = parent.town
             data['state'] = parent.state
             data['country'] = parent.country
-            data['parent_of'] = parent.parent_of.full_name
+            data['parent_of'] = parent.parent_of.id
             data['created_by'] = parent.created_by.username
             retdata.append(data)
 

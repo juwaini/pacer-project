@@ -12,7 +12,8 @@ angular.module('pacerApp', [])
     .controller('patientParentCtrl', ['$scope', '$http', function ($scope, $http) {
 
         angular.element(document).ready(function () {
-            $scope.parentForm.patient_id = parseInt($('#patient_id').val());
+            $scope.patient_id = parseInt($('#patient_id').val());
+            $scope.parentForm.patient_id = $scope.patient_id;
             loadTableData('load');
         });
 
@@ -66,15 +67,21 @@ angular.module('pacerApp', [])
 
             $http.get(url).then(function (res) {
                 var json = res.data;
+                var idx = 0;
                 for (var i=0; i < json.length; i++)
                 {
-                    var tmpData = [];
-                    tmpData.push(i+1);
-                    tmpData.push(json[i].full_name);
-                    tmpData.push(json[i].id_number);
-                    tmpData.push(json[i].contact_number);
-                    tmpData.push('Action');
-                    tableData.push(tmpData);
+                    if (json[i].parent_of == $scope.patient_id)
+                    {
+                        idx++;
+                        var tmpData = [];
+                        tmpData.push(idx);
+                        tmpData.push(json[i].full_name);
+                        tmpData.push(json[i].id_number);
+                        tmpData.push(json[i].contact_number);
+                        tmpData.push('Action');
+                        tableData.push(tmpData);
+                    }
+
                 }
 
                 if (action == 'reload')
