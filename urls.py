@@ -17,6 +17,7 @@ import views
 from django.contrib import admin
 from django.conf.urls import url, include
 from patients import urls as patients_urls
+from patient import urls as patient_urls
 from registration import urls as registration_urls
 from parents import urls as parents_urls
 
@@ -29,9 +30,15 @@ urlpatterns = [
     # For Admin
     url(r'^admin/', admin.site.urls),
 
-    # For apps endpoint
+    # For parents endpoint
     url(r'^api/parents', include(parents_urls.urlpatterns)),
+
+    # For patients endpoint
     url(r'^api/patients', include(patients_urls.urlpatterns)),
+
+    # For patient endpoint
+    url(r'^api/patient', include(patient_urls.urlpatterns)),
+
+    # For registration endpoint
     url(r'^', include(registration_urls.urlpatterns)),
-    # url('^', include('django.contrib.auth.urls')),
 ]

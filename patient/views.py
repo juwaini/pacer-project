@@ -1,6 +1,6 @@
 import json
-from .models import Patient
 from datetime import datetime
+from patients.models import Patient
 from django.http import JsonResponse, HttpResponse
 from django.contrib.auth.decorators import login_required
 
@@ -8,26 +8,23 @@ from django.contrib.auth.decorators import login_required
 
 
 @login_required(login_url='login')
-def api_patients(request):
+def api_patient(request, patient_id):
     if request.method == 'GET':
-        patients = Patient.objects.all()
-        retdata = []
-        for patient in patients:
-            data = dict()
+        patient = Patient.objects.get(id=patient_id)
+        retdata = dict()
 
-            data['id'] = patient.id
-            data['full_name'] = patient.full_name
-            data['id_number'] = patient.id_number
-            data['date_of_birth'] = patient.date_of_birth
-            data['sex'] = patient.sex
-            data['language'] = patient.language
-            data['address'] = patient.address
-            data['postcode'] = patient.postcode
-            data['town'] = patient.town
-            data['state'] = patient.state
-            data['country'] = patient.country
-            data['created_by'] = patient.created_by.username
-            retdata.append(data)
+        retdata['id'] = patient.id
+        retdata['full_name'] = patient.full_name
+        retdata['id_number'] = patient.id_number
+        retdata['date_of_birth'] = patient.date_of_birth
+        retdata['sex'] = patient.sex
+        retdata['language'] = patient.language
+        retdata['address'] = patient.address
+        retdata['postcode'] = patient.postcode
+        retdata['town'] = patient.town
+        retdata['state'] = patient.state
+        retdata['country'] = patient.country
+        retdata['created_by'] = patient.created_by.username
 
         return JsonResponse(retdata, safe=False)
 
@@ -50,5 +47,3 @@ def api_patients(request):
         patient.save()
 
         return HttpResponse('Successfully added patient %s' % data['full_name'])
-
-

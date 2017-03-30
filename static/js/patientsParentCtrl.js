@@ -2,14 +2,15 @@
  * Created by juwaini on 09/03/2017.
  */
 
-angular.module('pacerApp', [])
+angular
+    .module('pacerApp')
 
     .config(['$httpProvider', function($httpProvider) {
         $httpProvider.defaults.xsrfCookieName = 'csrftoken';
         $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
     }])
 
-    .controller('patientParentCtrl', ['$scope', '$http', function ($scope, $http) {
+    .controller('patientsParentCtrl', ['$scope', '$http', function ($scope, $http) {
 
         angular.element(document).ready(function () {
             $scope.patient_id = parseInt($('#patient_id').val());
