@@ -20,6 +20,7 @@ from patients import urls as patients_urls
 from patient import urls as patient_urls
 from registration import urls as registration_urls
 from parents import urls as parents_urls
+from diagnostics import urls as diagnostics_urls
 
 urlpatterns = [
 
@@ -38,6 +39,9 @@ urlpatterns = [
 
     # For patient endpoint
     url(r'^api/patient', include(patient_urls.urlpatterns)),
+
+    # For diagnostics endpoint
+    url(r'^api', include(diagnostics_urls.urlpatterns)),
 
     # For registration endpoint
     url(r'^', include(registration_urls.urlpatterns)),

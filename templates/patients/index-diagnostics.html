@@ -1,26 +1,50 @@
+{% verbatim %}
 <!-- DIAGNOSTICS SECTION BEGIN-->
-<div role="tabpanel" class="tab-pane fade" id="diagnostics"><!-- .tab-pane #patient -->
+<div ng-controller="patientDiagnosticsCtrl" role="tabpanel" class="tab-pane fade" id="diagnostics"><!-- .tab-pane #patient -->
 
-    <div id="patient-header" class="row">
-        <form class="form-inline" role="form"><!-- id="patient-header" -->
-            <div class="col-md-3">
-                <button id="create-new-patient" data-toggle="modal" data-target="#add-patient-modal" type="button" class="btn btn-block btn-primary">
-                <span class="glyphicon glyphicon-plus"></span> Diagnostics </button>
+    <h4>DIAGNOSTICS</h4>
+    <hr>
+
+    <p ng-repeat="diagnostic in diagnostics">
+        {{ diagnostic.id }} - {{ diagnostic.diagnostic }} - {{ diagnostic.created_on }}
+    </p>
+
+    <form id="diagnostics-form" class="form-horizontal" role="form"><!-- id="patient-header" -->
+        {% endverbatim %}
+        <input type="hidden" id="patient_id" value="{{ patient_id }}">
+        {% verbatim %}
+
+        <div class="form-group">
+            <label for="diagnostics" class="col-sm-2 control-label">Diagnostic</label>
+            <div class="col-sm-6">
+                <textarea class="form-control" rows="3" ng-model="diagnosticsForm.diagnostic"
+                          placeholder="{{ hint.diagnostic }}"></textarea>
             </div>
-
-            <div class="col-md-6">&nbsp;</div>
-        </form></div><!-- id="patient-header"-->
-        <!-- end of header -->
-
-        <!-- for promo/index.php tabledata -->
-        <br>
-
-        <div>
-            <table id="diagnostics-table" class="table table-bordered table-hover display" width="100%" cellspacing="0">
-            </table>
         </div>
-        <!-- end of tabledata -->
+
+        <!--div class="form-group">
+            <label for="full_name" class="col-sm-2 control-label">Full Name</label>
+            <div class="col-sm-6">
+                <input type="text" ng-model="parentForm.full_name" class="form-control"
+                       placeholder="{{ hint.full_name }}">
+            </div>
+        </div-->
+
+        <!--div class="form-group">
+            <label for="id_number" class="col-sm-2 control-label">ID Number</label>
+            <div class="col-sm-6">
+                <input type="text" ng-model="parentForm.id_number" class="form-control"
+                       placeholder="{{ hint.id_number }}">
+            </div>
+        </div-->
+
+        <div class="modal-footer">
+                    <!--button id="add-patient-submit" type="button" class="btn btn-primary">Submit</button-->
+                    <button ng-click="diagnosticsFormSubmit()" type="button" class="btn btn-primary">Submit</button>
+                    <button data-dismiss="modal" type="button" class="btn btn-danger">Close</button>
+        </div><!-- .modal-footer -->
+    </form>
 
 </div><!-- .tab-pane #patient-->
 <!-- DIAGNOSTICS SECTION END -->
-
+{% endverbatim %}
