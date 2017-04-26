@@ -33,7 +33,7 @@
                 <div class="form-group">
                     <label for="date_of_birth" class="col-sm-2 control-label">Date of Birth</label>
                     <div class="col-sm-6">
-                        <input type="date" class="form-control" ng-model="patientForm.date_of_birth"
+                        <input ng-blur="onDOBLostFocus()" type="date" class="form-control" ng-model="patientForm.date_of_birth"
                                placeholder="{{ hint.date_of_birth }}">
                     </div>
                 </div>

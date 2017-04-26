@@ -57,6 +57,15 @@ angular.module('pacerApp', [])
             });
         };
 
+        $scope.onDOBLostFocus = function() {
+            var dob = $scope.patientForm.date_of_birth;
+            var patient_age = calculateAge(dob.getMonth(), dob.getDate(), dob.getFullYear());
+            if (patient_age < 18)
+                console.log("Underage!");
+            else
+                console.log("Overage!");
+        };
+
         function loadTableData(action) {
             var url = '/api/patients';
             var patientTable = $('#patient-table');
@@ -75,7 +84,7 @@ angular.module('pacerApp', [])
                     tableData.push(tmpData);
                 }
 
-                if (action == 'reload')
+                if (action === 'reload')
                 {
                     patientTable.DataTable().destroy();
                 }
