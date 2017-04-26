@@ -50,14 +50,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="parent_name" class="col-sm-2 control-label">Parent Name</label>
-                    <div class="col-sm-6">
-                        <input type="text" ng-model="patientForm.parent_name" class="form-control"
-                               placeholder="{{ hint.parent_name }}">
-                    </div>
-                </div>
-
-                <div class="form-group">
                     <label for="language" class="col-sm-2 control-label">Language</label>
                     <div class="col-sm-6">
                         <select class="form-control" ng-model="patientForm.language">
@@ -72,9 +64,22 @@
 
                 <div class="form-group">
                     <label for="contact_number" class="col-sm-2 control-label">Contact Number</label>
-                    <div class="col-sm-6">
+                    <div class="col-sm-5">
                         <input type="text" ng-model="patientForm.contact_number" class="form-control"
                                placeholder="{{ hint.contact_number }}">
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-default" ng-show="!parent_ctx_div" ng-click="onAddContactClick()">Add</button>
+                    </div>
+                </div>
+                <div ng-show="parent_ctx_div" class="form-group ng-hide">
+                    <label class="col-sm-2 control-label">Contact Number</label>
+                    <div class="col-sm-5">
+                        <input type="text" ng-model="patientForm.contact_number" class="form-control"
+                               placeholder="{{ hint.contact_number }}">
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-default" ng-click="onCancelContactClick()">Cancel</button>
                     </div>
                 </div>
 
@@ -122,6 +127,21 @@
                     <div class="col-sm-6">
                         <input type="text" ng-model="patientForm.country" class="form-control"
                                placeholder="{{ hint.country }}">
+                    </div>
+                </div>
+
+                <div class="ng-hide" ng-show="parent1">
+                    <div class="form-group">
+                        <label class="col-sm-8 control-label bg-info">
+                            <p class="text-center">Parent Details</p>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="parent_name" class="col-sm-2 control-label">Parent Name</label>
+                        <div class="col-sm-6">
+                            <input type="text" ng-model="patientForm.parent_name" class="form-control"
+                                   placeholder="{{ hint.parent_name }}">
+                        </div>
                     </div>
                 </div>
 

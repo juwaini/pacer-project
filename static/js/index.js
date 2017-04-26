@@ -38,7 +38,7 @@ angular.module('pacerApp', [])
             sex: '',
             parent_name: '',
             language: '',
-            contact_number: '',
+            contact_number: [],
             email: '',
             address: '',
             postcode: '',
@@ -61,9 +61,17 @@ angular.module('pacerApp', [])
             var dob = $scope.patientForm.date_of_birth;
             var patient_age = calculateAge(dob.getMonth(), dob.getDate(), dob.getFullYear());
             if (patient_age < 18)
-                console.log("Underage!");
+                $scope.parent1 = true;
             else
-                console.log("Overage!");
+                $scope.parent1 = false;
+        };
+
+        $scope.onAddContactClick = function() {
+            $scope.parent_ctx_div = true;
+        };
+
+        $scope.onCancelContactClick = function() {
+            $scope.parent_ctx_div = false;
         };
 
         function loadTableData(action) {
