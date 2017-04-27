@@ -74,6 +74,22 @@ angular.module('pacerApp', [])
             $scope.parent_ctx_div = false;
         };
 
+        $scope.onAddEmailClick = function() {
+            $scope.parent_email_div = true;
+        };
+
+        $scope.onCancelEmailClick = function() {
+            $scope.parent_email_div = false;
+        };
+
+        $scope.onAddParentClick = function() {
+            $scope.parent2 = true;
+        };
+
+        $scope.onCancelParentClick = function() {
+            $scope.parent2 = false;
+        };
+
         function loadTableData(action) {
             var url = '/api/patients';
             var patientTable = $('#patient-table');
