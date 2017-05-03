@@ -21,6 +21,7 @@ from patient import urls as patient_urls
 from registration import urls as registration_urls
 from parents import urls as parents_urls
 from diagnostics import urls as diagnostics_urls
+from postcode import urls as postcode_urls
 
 urlpatterns = [
 
@@ -45,4 +46,7 @@ urlpatterns = [
 
     # For registration endpoint
     url(r'^', include(registration_urls.urlpatterns)),
+
+    # For postcode endpoint
+    url(r'^api', include(postcode_urls.urlpatterns)),
 ]
