@@ -66,6 +66,17 @@ angular.module('pacerApp', [])
                 $scope.parent1 = false;
         };
 
+        $scope.checkChars = function() {
+            if ($scope.patientForm.postcode.length === 5)
+            {
+                console.log("Valid postcode! " + $scope.patientForm.postcode);
+            }
+            else
+            {
+                console.log('Huh!?');
+            }
+        };
+
         $scope.onAddContactClick = function() {
             $scope.parent_ctx_div = true;
         };
