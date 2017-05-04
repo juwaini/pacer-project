@@ -13,6 +13,7 @@ angular.module('pacerApp', [])
 
         angular.element(document).ready(function () {
             loadTableData('load');
+            $scope.hideAddress = true;
         });
 
         $scope.hint = {
@@ -26,6 +27,7 @@ angular.module('pacerApp', [])
             email: 'e.g test@gmail.com',
             address: 'Please enter the address',
             postcode: 'e.g 50100',
+            locality: '',
             town: 'e.g Shah Alam',
             state: 'e.g Selangor',
             country: 'e.g Malaysia'
@@ -41,6 +43,7 @@ angular.module('pacerApp', [])
             contact_number: [],
             email: '',
             address: '',
+            locality: '',
             postcode: '',
             town: '',
             state: '',
@@ -70,10 +73,29 @@ angular.module('pacerApp', [])
             if ($scope.patientForm.postcode.length === 5)
             {
                 console.log("Valid postcode! " + $scope.patientForm.postcode);
+                $scope.hideAddress = false;
+
+                var url = '/api/postcode/' + $scope.patientForm.postcode;
+                console.log($scope.patientForm.postcode);
+
+                $scope.localityOptions = [];
+                $scope.townOptions = [];
+                $scope.stateOptions = [];
+                $http.get(url).then(function (res) {
+                    for (var i in res.data)
+                    {
+                        $scope.localityOptions.push(res.data[i].locality);
+                        $scope.townOptions.push(res.data[i].town);
+                        $scope.stateOptions.push(res.data[i].state);
+                    }
+                    $scope.towns = $scope.townOptions.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
+                    $scope.states = $scope.stateOptions.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
+                    $scope.localities = $scope.localityOptions.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
+                });
             }
             else
             {
-                console.log('Huh!?');
+                $scope.hideAddress = true;
             }
         };
 

@@ -117,29 +117,30 @@
                     </div>
                 </div>
 
+                <div class="form-group ng-hide" ng-hide="hideAddress">
+                    <label for="locality" class="col-sm-2 control-label">Taman/Kampung:</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" ng-model="patientForm.locality">
+                            <option ng-repeat="locality in localities" value="{{locality}}">{{locality}}</option>
+                        </select>
+                    </div>
+                </div>
 
-
-                <div class="form-group">
+                <div class="form-group ng-hide" ng-hide="hideAddress">
                     <label for="town" class="col-sm-2 control-label">Town</label>
                     <div class="col-sm-6">
-                        <input type="text" ng-model="patientForm.town" class="form-control"
-                               placeholder="{{ hint.town }}">
+                        <select class="form-control" ng-model="patientForm.town">
+                            <option ng-repeat="town in towns" value="{{town}}">{{town}}</option>
+                        </select>
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group ng-hide" ng-hide="hideAddress">
                     <label for="state" class="col-sm-2 control-label">State</label>
                     <div class="col-sm-6">
-                        <input type="text" ng-model="patientForm.state" class="form-control"
-                               placeholder="{{ hint.state }}">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="country" class="col-sm-2 control-label">Country</label>
-                    <div class="col-sm-6">
-                        <input type="text" ng-model="patientForm.country" class="form-control"
-                               placeholder="{{ hint.country }}">
+                        <select class="form-control" ng-model="patientForm.state">
+                            <option ng-repeat="state in states" value="{{state}}">{{state}}</option>
+                        </select>
                     </div>
                 </div>
 
