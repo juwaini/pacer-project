@@ -7,6 +7,6 @@ from patients.models import Patient
 
 class Diagnostic(models.Model):
     diagnostic = models.TextField()
-    diagnostic_for = models.ForeignKey(Patient)
+    diagnostic_for = models.ForeignKey(Patient, on_delete='cascade')
     created_on = models.DateTimeField()
-    created_by = models.ForeignKey(User)
+    created_by = models.ForeignKey(User, on_delete='cascade')

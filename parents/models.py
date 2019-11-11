@@ -16,5 +16,5 @@ class Parent(models.Model):
     town = models.CharField(max_length=30)
     state = models.CharField(max_length=30)
     country = models.CharField(max_length=30)
-    parent_of = models.ForeignKey(Patient)
-    created_by = models.ForeignKey(User)
+    parent_of = models.ForeignKey(Patient, on_delete='cascade')
+    created_by = models.ForeignKey(User, on_delete='cascade')

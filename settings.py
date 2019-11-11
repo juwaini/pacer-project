@@ -86,10 +86,9 @@ WSGI_APPLICATION = 'wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd3n7j1s3rjlsk9',
-        'USER': 'ecapfwjjwlptjb',
-        'PASSWORD': 'c1e2794582102418566316e3bfa7e01710b18d47ca9f752bb31d587d1a60c8e1',
-        'HOST': 'ec2-54-243-124-240.compute-1.amazonaws.com',
+        'NAME': 'pacer',
+        'USER': 'juwaini',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
@@ -133,5 +132,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+STATICFILES_DIRS = ['static']

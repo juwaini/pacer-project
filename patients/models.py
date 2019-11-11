@@ -15,4 +15,4 @@ class Patient(models.Model):
     town = models.CharField(max_length=30)
     state = models.CharField(max_length=30)
     country = models.CharField(max_length=30)
-    created_by = models.ForeignKey(User)
+    created_by = models.ForeignKey(User, on_delete='cascade')
